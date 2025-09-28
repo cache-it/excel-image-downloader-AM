@@ -8,8 +8,8 @@ All'interno della cartella che hai ricevuto troverai:
 ```
 Cartella principale/
 │
-├── download_images         # Programma da avviare (Linux)
-│   └── download_images.exe # Programma da avviare (Windows)
+├── downloader-win.exe      # Programma da avviare (Windows)
+├── downloader-linux        # Programma da avviare (Linux)
 ├── config.yaml             # File di configurazione
 ├── data/                   # Cartella dove inserire i file Excel
 └── foto_download/          # Cartella dove saranno salvate le immagini
@@ -37,7 +37,7 @@ Foto
 1. Vai nella cartella principale del progetto.
 2. Fai doppio click sul file:
    ```
-   download_images.exe
+   downloader.exe
    ```
 3. Si aprirà una finestra nera (terminal).  
    Attendi che compaia il messaggio:
@@ -49,11 +49,11 @@ Foto
 1. Apri il terminale nella cartella principale.
 2. Rendi il file eseguibile (solo la prima volta):
    ```bash
-   chmod +x download_images
+   chmod +x downloader-linux
    ```
 3. Avvia il programma:
    ```bash
-   ./download_images
+   ./downloader-linux
    ```
 
 ## 4. Come funziona
@@ -102,7 +102,7 @@ foto_download/
 
 ## 8. Flusso di lavoro consigliato
 1. Inserisci tutti i file Excel nella cartella `data/`.
-2. Avvia il programma (`download_images.exe` su Windows o `./download_images` su Linux).
+2. Avvia il programma (`downloader-win.exe` su Windows o `./downloader-linux` su Linux).
 3. Attendi la fine dell'elaborazione.
 4. Trova tutte le immagini nella cartella `foto_download/`.
 
