@@ -1,6 +1,6 @@
-# Guida all'utilizzo - Download Immagini da Excel
+# User Guide - Excel Image Downloader
 
-Questa applicazione ti permette di scaricare automaticamente immagini partendo da uno o più file Excel, organizzandole in cartelle e rinominandole in modo ordinato.
+This application allows you to automatically download images from one or more Excel files, organizing them into folders and renaming them in an orderly way.
 
 ## 📦 Download
 
@@ -20,118 +20,117 @@ Questa applicazione ti permette di scaricare automaticamente immagini partendo d
 
 ---
 
-## 1. Contenuto della cartella fornita
-All'interno della cartella che hai ricevuto troverai:
+## 1. Folder content provided
+Inside the folder you received you will find:
 
 ```
-Cartella principale/
+Main folder/
 │
-├── downloader-win.exe      # Programma da avviare (Windows)
-├── downloader-linux        # Programma da avviare (Linux)
-├── config.yaml             # File di configurazione
-├── data/                   # Cartella dove inserire i file Excel
-└── foto_download/          # Cartella dove saranno salvate le immagini
+├── downloader-win.exe      # Program to run (Windows)
+├── downloader-linux        # Program to run (Linux)
+├── config.yaml             # Configuration file
+├── data/                   # Folder where you put the Excel files
+└── foto_download/          # Folder where the downloaded images will be saved
 ```
 
-## 2. Preparazione dei file Excel
-- Inserisci nella cartella `data/` uno o più file Excel (`.xlsx`) con i dati.
-- Ogni file deve contenere **una colonna con i link delle immagini**, chiamata esattamente:
+## 2. Preparing the Excel files
+- Place one or more Excel (`.xlsx`) files with data in the `data/` folder.
+- Each file must contain **a column with the image links**, named exactly:
 
 ```
 Foto
 ```
 
-### Esempio di file Excel
-| Grado | Codice Fiscale | Matricola | Cognome | Nome  | Foto                                   |
-|-------|----------------|-----------|---------|-------|---------------------------------------|
-| Ten.  | RSSMRA80A01H501U | 12345     | Rossi   | Mario | https://server.com/images/abc123.jpg  |
-| Magg. | VRDLGI75T41H501T | 67890     | Verdi   | Luigi | https://server.com/pics/test456.png   |
+### Example of an Excel file
+| Rank | Tax Code | ID Number | Last Name | First Name | Foto                                   |
+|------|----------|-----------|-----------|------------|---------------------------------------|
+| Ten. | RSSMRA80A01H501U | 12345 | Rossi | Mario | https://server.com/images/abc123.jpg  |
+| Magg.| VRDLGI75T41H501T | 67890 | Verdi | Luigi | https://server.com/pics/test456.png   |
 
-⚠ **Attenzione:** Il nome della colonna deve essere scritto esattamente come indicato (`Foto`) per funzionare correttamente.
+⚠ **Warning:** The column name must be exactly as indicated (`Foto`) to work correctly.
 
-## 3. Avvio del programma
+## 3. Running the program
 
 ### Windows
-1. Vai nella cartella principale del progetto.
-2. Fai doppio click sul file:
+1. Go to the main folder of the project.
+2. Double-click on the file:
    ```
    downloader.exe
    ```
-3. Si aprirà una finestra nera (terminal).  
-   Attendi che compaia il messaggio:
+3. A black terminal window will open.  
+   Wait for the message to appear:
    ```
-   🎉 Download di tutte le immagini completato!
+   🎉 Download of all images completed!
    ```
 
 ### Linux
-1. Apri il terminale nella cartella principale.
-2. Rendi il file eseguibile (solo la prima volta):
+1. Open the terminal in the main folder.
+2. Make the file executable (first time only):
    ```bash
    chmod +x downloader-linux
    ```
-3. Avvia il programma:
+3. Run the program:
    ```bash
    ./downloader-linux
    ```
 
-## 4. Come funziona
-- Il programma legge **tutti i file Excel presenti nella cartella `data/`**.
-- Per ogni file Excel:
-  1. Analizza i link nella colonna `Foto`.
-  2. Scarica le immagini corrispondenti.
-  3. Salva le immagini in una **sottocartella** all'interno di `foto_download/` con lo stesso nome del file Excel.
+## 4. How it works
+- The program reads **all Excel files present in the `data/` folder**.
+- For each Excel file:
+  1. It analyzes the links in the `Foto` column.
+  2. Downloads the corresponding images.
+  3. Saves the images in a **subfolder** inside `foto_download/` with the same name as the Excel file.
 
-## 5. Nome dei file scaricati
-Le immagini vengono rinominate automaticamente seguendo questa regola:
+## 5. Naming of downloaded files
+The images are automatically renamed following this rule:
 ```
-<codice_finale_link>_<ID progressivo>.<estensione>
+<final_link_code>.<extension>
 ```
 
-Esempio:
-- URL nel file Excel:  
+Example:
+- URL in the Excel file:  
   ```
   https://server.com/images/abc123.jpg
   ```
-- Riga nel file Excel: 1
 
-Output finale:
+Final output:
 ```
-abc123_1.jpg
+abc123.jpg
 ```
 
-## 6. Esempio di risultato finale
-Se nella cartella `data/` hai un file chiamato `militari_roma.xlsx`, il risultato sarà:
+## 6. Example of final result
+If there is a file named `militari_roma.xlsx` in the `data/` folder, the result will be:
 
 ```
 foto_download/
 └── militari_roma/
-    ├── abc123_1.jpg
-    └── test456_2.png
+    ├── abc123.jpg
+    └── test456.png
 ```
 
-## 7. Problemi comuni
+## 7. Common issues
 
-| Problema                                   | Soluzione |
-|-------------------------------------------|-----------|
-| **Errore: Colonna non trovata**           | Verifica che la colonna con i link sia chiamata esattamente `Foto`. |
-| **Nessuna immagine scaricata**            | Controlla che i link nel file Excel siano validi e accessibili. |
-| **Il programma si chiude subito**         | Apri il terminale manualmente e lancia l'applicativo per leggere i messaggi di errore. |
-| **Messaggio "File già esistente, salto"** | Significa che l'immagine è già stata scaricata e non viene riscaricata. |
+| Problem                                   | Solution |
+|------------------------------------------|----------|
+| **Error: Column not found**              | Verify that the column with the links is named exactly `Foto`. |
+| **No images downloaded**                 | Check that the links in the Excel file are valid and accessible. |
+| **The program closes immediately**       | Open the terminal manually and run the program to read the error messages. |
+| **Message "File already exists, skipping"** | It means that the image has already been downloaded and will not be downloaded again. |
 
-## 8. Flusso di lavoro consigliato
-1. Inserisci tutti i file Excel nella cartella `data/`.
-2. Avvia il programma (`downloader-win.exe` su Windows o `./downloader-linux` su Linux).
-3. Attendi la fine dell'elaborazione.
-4. Trova tutte le immagini nella cartella `foto_download/`.
+## 8. Recommended workflow
+1. Place all Excel files in the `data/` folder.
+2. Run the program (`downloader-win.exe` on Windows or `./downloader-linux` on Linux).
+3. Wait for the processing to complete.
+4. Find all the images in the `foto_download/` folder.
 
-## 9. Note importanti
-- Non modificare il file `config.yaml` a meno che non sia strettamente necessario.
-- Mantieni separati i file Excel in `data/` per ogni batch di immagini.
-- Le immagini già scaricate **non vengono sovrascritte**.
+## 9. Important notes
+- Do not modify the `config.yaml` file unless strictly necessary.
+- Keep separate Excel files in `data/` for each batch of images.
+- Already downloaded images **will not be overwritten**.
 
-## 10. Supporto
-In caso di problemi:
-- Conserva eventuali messaggi di errore mostrati a video.
-- Contatta l'amministratore fornendo:
-  - Una copia del file Excel che non ha funzionato.
-  - Uno screenshot del terminale con l'errore.
+## 10. Support
+In case of problems:
+- Save any error messages displayed on the screen.
+- Contact the administrator providing:
+  - A copy of the Excel file that didn't work.
+  - A screenshot of the terminal showing the error.
