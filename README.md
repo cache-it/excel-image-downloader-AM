@@ -2,6 +2,24 @@
 
 Questa applicazione ti permette di scaricare automaticamente immagini partendo da uno o più file Excel, organizzandole in cartelle e rinominandole in modo ordinato.
 
+## 📦 Download
+
+<p>
+  <img src="https://img.icons8.com/fluency/28/000000/zip.png" alt="ZIP Icon" style="vertical-align:middle; margin-right:10px;"/>
+  <a href="https://github.com/cache-it/excel-image-downloader-AM/archive/refs/heads/downloader-win.zip" style="font-size:18px; text-decoration:none; margin:auto;">
+    excel-image-downloader-AM/downloader-win.zip
+  </a> &nbsp;&nbsp;  (Windows)
+</p>
+
+<p>
+  <img src="https://img.icons8.com/fluency/28/000000/zip.png" alt="ZIP Icon" style="vertical-align:middle; margin-right:10px;"/>
+  <a href="https://github.com/cache-it/excel-image-downloader-AM/archive/refs/heads/downloader-linux.zip" style="font-size:18px; text-decoration:none; margin:auto;">
+    excel-image-downloader-AM/downloader-linux.zip
+  </a> &nbsp;&nbsp;  (Linux)
+</p>
+
+---
+
 ## 1. Contenuto della cartella fornita
 All'interno della cartella che hai ricevuto troverai:
 
