@@ -1,3 +1,4 @@
 data_folder: "data"               # Cartella con i file Excel
 output_folder: "foto_download"    # Cartella dove salvare le immagini
-url_column: "Foto"                 # Nome della colonna con i link
+url_column: "Foto"                # Nome della colonna con i link
+name_column: "Numero Cmd"         # Nome della colonna per il nome del file

@@ -24,7 +24,8 @@ with open(config_path, "r", encoding="utf-8") as f:
 # ✅ NON usare resource_path per queste cartelle esterne
 DATA_FOLDER = config["data_folder"]           # Esempio: "data"
 OUTPUT_FOLDER = config["output_folder"]       # Esempio: "foto_download"
-URL_COLUMN = config["url_column"]             # Es. "image_url"
+URL_COLUMN = config["url_column"]             # Es. "url: image"
+NAME_COLUMN = config["name_column"]           # Es. "image_name"
 
 # -----------------------------
 # Crea cartella di output se non esiste
@@ -45,7 +46,7 @@ for file in excel_files:
     print(f"   - {os.path.basename(file)}")
 
 # -----------------------------
-# Funzione per estrarre il codice finale dal link
+# Funzione per estrarre il codice finale dal link - NOT USED
 # -----------------------------
 def get_last_code_from_url(url: str) -> str:
     """
@@ -80,9 +81,15 @@ def process_excel_file(excel_path: str):
         print(f"❌ Colonna '{URL_COLUMN}' mancante in {excel_path}")
         return
 
+    # Controlla che la colonna NAME esista
+    if NAME_COLUMN not in df.columns:
+        print(f"❌ Colonna '{NAME_COLUMN}' mancante in {excel_path}")
+        return
+
     # Scarica le immagini
     for index, row in df.iterrows():
         url = str(row[URL_COLUMN]).strip()
+        name = str(row[NAME_COLUMN]).strip()
 
         if not url or url.lower() == "nan":
             print(f"⚠ Riga {index + 2}: URL vuoto, salto...")
@@ -94,7 +101,8 @@ def process_excel_file(excel_path: str):
             ext = ".jpg"  # default se non riconosciuta
 
         # Estrai codice finale
-        last_code = get_last_code_from_url(url)
+        # last_code = get_last_code_from_url(url)
+        last_code = name
         filename = f"{last_code}{ext}"
         output_path = os.path.join(file_output_folder, filename)
 
